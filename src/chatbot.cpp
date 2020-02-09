@@ -12,7 +12,7 @@
 ChatBot::ChatBot()
 {
     // invalidate data handles
-    _image = nullptr;
+    _image = NULL;
     _chatLogic = nullptr;
     _rootNode = nullptr;
 }
@@ -83,20 +83,13 @@ ChatBot::ChatBot(ChatBot &&source)
   _chatLogic=source._chatLogic;
   _rootNode=source._rootNode;
 
-  _chatLogic=nullptr;
-  _rootNode=nullptr;
+  source._chatLogic=nullptr;
+  source._rootNode=nullptr;
+  _image=source._image;
 
-  if (_image!=NULL)
-  {
-    delete _image;
-    *_image=*(source._image);
-  }
 
-  if (source._image!=NULL)
-  {
-    delete source._image;
-    source._image=NULL;
-  }
+  source._image=NULL;
+
 }
 
 ChatBot &ChatBot::operator=(ChatBot &&source) {
@@ -110,20 +103,13 @@ ChatBot &ChatBot::operator=(ChatBot &&source) {
   _chatLogic=source._chatLogic;
   _rootNode=source._rootNode;
 
-  _chatLogic=nullptr;
-  _rootNode=nullptr;
+  source._chatLogic=nullptr;
+  source._rootNode=nullptr;
 
-  if (_image!=NULL)
-  {
-    delete _image;
-    *_image=*(source._image);
-  }
+  _image=source._image;
+  source._image=NULL;
 
-  if (source._image!=NULL)
-  {
-    delete source._image;
-    source._image=NULL;
-  }
+
 
 
   return *this;
