@@ -63,6 +63,7 @@ ChatBot &ChatBot::operator=(const ChatBot &source)
   }
   _chatLogic=source._chatLogic;
   _rootNode=source._rootNode;
+  _currentNode=source._currentNode;
 
   if (_image!=NULL)
   {
@@ -77,13 +78,14 @@ ChatBot::ChatBot(ChatBot &&source)
   std::cout << "MOVING instance " << &source << " to instance " << this << std::endl;
   _chatLogic=source._chatLogic;
   _rootNode=source._rootNode;
+  _currentNode=source._currentNode;
 
   _chatLogic->SetChatbotHandle(this);
 
 
-
   source._chatLogic=nullptr;
   source._rootNode=nullptr;
+  source._currentNode=nullptr;
   _image=source._image;
 
 
@@ -101,12 +103,14 @@ ChatBot &ChatBot::operator=(ChatBot &&source) {
 
   _chatLogic=source._chatLogic;
   _rootNode=source._rootNode;
+  _currentNode=source._currentNode;
 
   _chatLogic->SetChatbotHandle(this);
 
 
   source._chatLogic=nullptr;
   source._rootNode=nullptr;
+  source._currentNode=nullptr;
 
   _image=source._image;
   source._image=NULL;
