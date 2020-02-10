@@ -24,13 +24,11 @@ ChatLogic::~ChatLogic() {
   ////
 
   // delete chatbot instance
-  // delete _chatBot;
 
   // delete all nodes
   for (auto it = std::begin(_nodes); it != std::end(_nodes); ++it) {
     it->reset();
   }
-
 
   ////
   //// EOF STUDENT CODE
@@ -173,9 +171,7 @@ void ChatLogic::LoadAnswerGraphFromFile(std::string filename) {
               AddAllTokensToElement("KEYWORD", tokens, *edge);
 
               // store reference in child node and parent node
-              (*childNode)
-                  ->AddEdgeToParentNode(
-                      edge.get()); // TODO: ownership of edges happen here
+              (*childNode)->AddEdgeToParentNode(edge.get());
               (*parentNode)->AddEdgeToChildNode(std::move(edge));
             }
 
