@@ -23,12 +23,8 @@ ChatLogic::~ChatLogic() {
   //// STUDENT CODE
   ////
 
-  // delete chatbot instance
+  // Node deletions are not required here.
 
-  // delete all nodes
-  for (auto it = std::begin(_nodes); it != std::end(_nodes); ++it) {
-    it->reset();
-  }
 
   ////
   //// EOF STUDENT CODE
